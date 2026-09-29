@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Un universo para ti 🏎️✨</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#02030b;color:#fff;font-family:Arial,Helvetica,sans-serif}
+button,input{font:inherit}.screen{position:fixed;inset:0}.hidden{display:none!important}
+#space{position:fixed;inset:0;background:radial-gradient(circle at 50% 50%,#11185b 0,#070a25 28%,#02030b 72%)}
+#stars{position:absolute;inset:0;width:100%;height:100%}
+.nebula{position:absolute;border-radius:50%;filter:blur(50px);opacity:.22;mix-blend-mode:screen}
+.n1{width:45vw;height:45vw;background:#8c2cff;left:-12vw;top:8vh}.n2{width:38vw;height:38vw;background:#00bfff;right:-8vw;bottom:2vh}.n3{width:28vw;height:28vw;background:#ff267f;left:38vw;top:55vh}
+#intro,#portal{position:relative;z-index:3;min-height:100vh;display:grid;place-items:center;padding:20px}
+.panel{width:min(760px,94vw);padding:36px 24px;border:1px solid #ffffff22;border-radius:30px;background:#050616bb;backdrop-filter:blur(14px);box-shadow:0 0 80px #007dff22;text-align:center}
+.logo{font-size:clamp(34px,9vw,70px);font-weight:900;letter-spacing:-3px;color:#ffcc22;text-shadow:0 4px 0 #e50024,0 0 28px #ff3b77}.tiny{color:#aeb7dc;letter-spacing:3px;text-transform:uppercase;font-size:11px}
+h1{font-size:clamp(38px,8vw,76px);line-height:.95;margin:14px 0;background:linear-gradient(90deg,#fff,#74e8ff,#ff6fb1,#fff);background-size:300%;color:transparent;-webkit-background-clip:text;animation:shine 5s linear infinite}
+@keyframes shine{to{background-position:300%}}p{color:#cbd0e8;line-height:1.55}.btn{border:0;border-radius:999px;padding:13px 24px;color:#fff;font-weight:800;background:linear-gradient(90deg,#ff246e,#714cff,#00bfff);box-shadow:0 0 25px #744cff44;cursor:pointer;transition:.2s}.btn:hover{transform:translateY(-2px) scale(1.02)}
+#portal{display:none}.universe{position:relative;width:min(1100px,100vw);height:min(760px,100vh);min-height:600px}
+.title{position:absolute;top:3%;left:50%;transform:translateX(-50%);text-align:center;width:100%;z-index:20}.title h2{font-size:clamp(28px,5vw,52px);margin:0 0 5px}.title span{color:#aeb7dc;font-size:13px}
+.planet{position:absolute;z-index:8;left:50%;top:52%;width:clamp(150px,24vw,245px);height:clamp(150px,24vw,245px);transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle at 32% 25%,#fff9 0 5%,transparent 6%),radial-gradient(circle at 70% 65%,#0006 0 28%,transparent 29%),radial-gradient(circle at 38% 42%,#3a72ff,#22b7ce 42%,#163dba 68%,#0a0d4b);box-shadow:0 0 28px #32dcff,0 0 90px #5b58ff88,inset -25px -25px 45px #0008;animation:float 4s ease-in-out infinite}
+.planet:before,.planet:after{content:"";position:absolute;border:2px solid #ffffff22;border-radius:50%;inset:10%;transform:rotate(-18deg) scaleY(.34)}.planet:after{inset:20%;transform:rotate(25deg) scaleY(.3)}
+@keyframes float{50%{transform:translate(-50%,-54%) scale(1.025)}}
+.orbit{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);border:1px solid #5ce8ff2b;border-radius:50%;width:clamp(300px,54vw,690px);height:clamp(190px,35vw,440px);animation:orbitPulse 4s ease-in-out infinite}.orbit.o2{width:clamp(390px,70vw,900px);height:clamp(270px,48vw,610px);border-color:#ff4d9a20;animation-delay:1s}
+@keyframes orbitPulse{50%{box-shadow:0 0 35px #4ee8ff12}}
+.car{position:absolute;z-index:12;width:125px;height:76px;cursor:pointer;filter:drop-shadow(0 0 9px #ffffff22);transition:filter .25s}.car:hover{filter:drop-shadow(0 0 18px #fff)}
+.car svg{width:100%;height:100%;overflow:visible}.car.gira{animation:spinReveal .75s ease}.car.selected{z-index:30;filter:drop-shadow(0 0 22px #fff)}
+@keyframes spinReveal{50%{transform:rotate(360deg) scale(1.2)}}
+.c1{left:12%;top:31%;animation:drift1 4s ease-in-out infinite}.c2{right:11%;top:29%;animation:drift2 5s ease-in-out infinite}.c3{left:6%;top:63%;animation:drift2 4.5s ease-in-out infinite}.c4{right:5%;top:62%;animation:drift1 5.5s ease-in-out infinite}.c5{left:25%;top:79%;animation:drift3 4.3s ease-in-out infinite}.c6{right:24%;top:78%;animation:drift3 5s ease-in-out infinite}
+@keyframes drift1{50%{translate:8px -8px;rotate:4deg}}@keyframes drift2{50%{translate:-8px 7px;rotate:-5deg}}@keyframes drift3{50%{translate:5px 9px;rotate:3deg}}
+.message{position:absolute;left:50%;top:68px;transform:translateX(-50%) scale(.8);width:190px;padding:10px;border:1px solid #fff3;border-radius:14px;background:#08091aeF;box-shadow:0 10px 40px #0009;text-align:center;font-size:11px;line-height:1.35;opacity:0;pointer-events:none;transition:.25s}.selected .message{opacity:1;transform:translateX(-50%) scale(1)}
+.badge{position:absolute;z-index:25;bottom:4%;left:50%;transform:translateX(-50%);text-align:center;color:#bfc7e6;font-size:12px}
+#music{position:fixed;right:15px;top:15px;z-index:40}.musicOn{background:linear-gradient(90deg,#20dfff,#8b5cff)}
+.meteor{position:absolute;width:130px;height:2px;background:linear-gradient(90deg,transparent,#fff,#5de9ff);transform:rotate(-35deg);filter:drop-shadow(0 0 7px #5de9ff);animation:meteor 2.5s linear forwards;z-index:5}
+@keyframes meteor{from{translate:0 0;opacity:0}15%{opacity:1}to{translate:-420px 250px;opacity:0}}
+.modal{position:fixed;inset:0;z-index:50;display:none;place-items:center;background:#0009;backdrop-filter:blur(9px);padding:20px}.modal.on{display:grid}.letter{width:min(560px,94vw);padding:32px;border-radius:26px;background:linear-gradient(145deg,#121431,#050614);border:1px solid #fff2;box-shadow:0 20px 90px #000b;text-align:center}.letter h2{font-size:32px;margin:0 0 10px}.letter p{font-size:15px}
+@media(max-width:700px){.universe{min-height:600px;height:100vh}.car{width:91px;height:57px}.c1{left:1%;top:27%}.c2{right:1%;top:27%}.c3{left:-1%;top:58%}.c4{right:-1%;top:58%}.c5{left:9%;top:78%}.c6{right:9%;top:78%}.message{width:150px;font-size:10px}.planet{top:50%}.orbit{top:50%}.title{top:4%}.badge{bottom:3%}}
+</style>
+</head>
+<body>
+<div id="space"><canvas id="stars"></canvas><div class="nebula n1"></div><div class="nebula n2"></div><div class="nebula n3"></div></div>
+
+<section id="intro">
+ <div class="panel">
+  <div class="logo">HOT WHEELS</div><div class="tiny">un portal secreto · 30 de septiembre</div>
+  <h1>Tengo algo<br>para ti… 💗</h1>
+  <p>Prepárate. Hay un pequeño universo esperándote, lleno de velocidad, estrellas y mensajes que solo tienes que descubrir.</p>
+  <button class="btn" id="open">Entrar al universo ✨</button>
+ </div>
+</section>
+
+<section id="portal">
+ <button class="btn" id="music">🎵 Música OFF</button>
+ <div class="universe">
+  <div class="title"><h2>Feliz 30 de septiembre 🏎️</h2><span>Día de los Hot Wheels · toca cada carro</span></div>
+  <div class="orbit"></div><div class="orbit o2"></div><div class="planet"></div>
+
+  <div class="car c1" data-msg="Hoy es el día perfecto para recordarte lo increíble que eres. 💗">
+   <svg viewBox="0 0 140 80"><path d="M8 53l13-19 28-5 13-15h25l15 15 27 6 6 18z" fill="#f22" stroke="#fff" stroke-width="2"/><path d="M54 30l11-14h20l11 14z" fill="#48dfff"/><circle cx="38" cy="56" r="10" fill="#111" stroke="#aaa" stroke-width="3"/><circle cx="105" cy="56" r="10" fill="#111" stroke="#aaa" stroke-width="3"/></svg><div class="message"></div></div>
+  <div class="car c2" data-msg="Que nunca te falten sueños por perseguir ni caminos por recorrer. ✨">
+   <svg viewBox="0 0 140 80"><path d="M8 53l13-19 28-5 13-15h25l15 15 27 6 6 18z" fill="#168cff" stroke="#fff" stroke-width="2"/><path d="M54 30l11-14h20l11 14z" fill="#ff7139"/><circle cx="38" cy="56" r="10" fill="#111" stroke="#aaa" stroke-width="3"/><circle cx="105" cy="56" r="10" fill="#111" stroke="#aaa" stroke-width="3"/></svg><div class="message"></div></div>
+  <div class="car c3" data-msg="Sigue acelerando hacia todo lo bonito que te espera. 🏁">
+   <svg viewBox="0 0 140 80"><path d="M8 53l13-19 28-5 13-15h25l15 15 27 6 6 18z" fill="#ff8b18" stroke="#fff" stroke-width="2"/><path d="M54 30l11-14h20l11 14z" fill="#26264b"/><circle cx="38" cy="56" r="10" fill="#111" stroke="#aaa" stroke-width="3"/><circle cx="105" cy="56" r="10" fill="#111" stroke="#aaa" stroke-width="3"/></svg><div class="message"></div></div>
+  <div class="car c4" data-msg="Eres una persona única, con una energía muy especial. 🌟">
+   <svg viewBox="0 0 140 80"><path d="M8 53l13-19 28-5 13-15h25l15 15 27 6 6 18z" fill="#62ef29" stroke="#fff" stroke-width="2"/><path d="M54 30l11-14h20l11 14z" fill="#64dfff"/><circle cx="38" cy="56" r="10" fill="#111" stroke="#aaa" stroke-width="3"/><circle cx="105" cy="56" r="10" fill="#111" stroke="#aaa" stroke-width="3"/></svg><div class="message"></div></div>
+  <div class="car c5" data-msg="No dejes que nada te quite esas ganas de disfrutar la vida. 💫">
+   <svg viewBox="0 0 140 80"><path d="M8 53l13-19 28-5 13-15h25l15 15 27 6 6 18z" fill="#a755ff" stroke="#fff" stroke-width="2"/><path d="M54 30l11-14h20l11 14z" fill="#ff58ae"/><circle cx="38" cy="56" r="10" fill="#111" stroke="#aaa" stroke-width="3"/><circle cx="105" cy="56" r="10" fill="#111" stroke="#aaa" stroke-width="3"/></svg><div class="message"></div></div>
+  <div class="car c6" data-msg="Gracias por existir. ¡Feliz Día de los Hot Wheels! 🏎️❤️">
+   <svg viewBox="0 0 140 80"><path d="M8 53l13-19 28-5 13-15h25l15 15 27 6 6 18z" fill="#fff" stroke="#ff426e" stroke-width="3"/><path d="M54 30l11-14h20l11 14z" fill="#58dfff"/><circle cx="38" cy="56" r="10" fill="#111" stroke="#aaa" stroke-width="3"/><circle cx="105" cy="56" r="10" fill="#111" stroke="#aaa" stroke-width="3"/></svg><div class="message"></div></div>
+  <div class="badge">💫 cada carro guarda una pequeña parte del mensaje 💫</div>
+ </div>
+</section>
+
+<div class="modal" id="modal"><div class="letter"><h2>💗 Feliz 30 de septiembre</h2><p>Hoy es un día para celebrar la velocidad, la aventura y a una persona que merece que le recuerden lo especial que es. Que sigas encontrando caminos increíbles, momentos que te hagan sonreír y muchísimas razones para acelerar hacia tus sueños. 🏎️✨</p><button class="btn" id="close">Cerrar 💫</button></div></div>
+
+<script>
+const intro=document.getElementById('intro'),portal=document.getElementById('portal');
+document.getElementById('open').onclick=()=>{intro.classList.add('hidden');portal.style.display='grid';startMeteors();};
+const cars=[...document.querySelectorAll('.car')];
+cars.forEach(c=>{c.querySelector('.message').textContent=c.dataset.msg;c.onclick=()=>{cars.forEach(x=>x.classList.remove('selected'));c.classList.add('selected','gira');setTimeout(()=>c.classList.remove('gira'),800)}});
+document.addEventListener('click',e=>{if(!e.target.closest('.car'))cars.forEach(c=>c.classList.remove('selected'))});
+
+// estrellas + partículas
+const canvas=document.getElementById('stars'),ctx=canvas.getContext('2d');let W,H,pts=[];
+function resize(){W=canvas.width=innerWidth;H=canvas.height=innerHeight;canvas.style.width=W+'px';canvas.style.height=H+'px';pts=Array.from({length:Math.min(330,Math.floor(W/4))},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.5+.2,a:Math.random(),v:Math.random()*.015+.003}))}
+function stars(){ctx.clearRect(0,0,W,H);for(const p of pts){p.a+=p.v;if(p.a>1||p.a<.1)p.v*=-1;ctx.globalAlpha=p.a;ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,7);ctx.fill()}requestAnimationFrame(stars)}addEventListener('resize',resize);resize();stars();
+
+// meteoritos
+function meteor(){if(portal.style.display!=='grid')return;const m=document.createElement('i');m.className='meteor';m.style.left=(Math.random()*100+10)+'vw';m.style.top=(Math.random()*55)+'vh';document.body.appendChild(m);setTimeout(()=>m.remove(),2600)}
+function startMeteors(){setInterval(meteor,2300);meteor()}
+
+// Música ambiental generada localmente: no necesita archivos externos.
+let audio=null,on=false;
+document.getElementById('music').onclick=async()=>{if(!audio){audio=new (window.AudioContext||window.webkitAudioContext)();const master=audio.createGain();master.gain.value=.045;master.connect(audio.destination);[220,277.18,329.63].forEach((f,i)=>{const o=audio.createOscillator(),g=audio.createGain();o.type='sine';o.frequency.value=f;g.gain.value=.018;o.connect(g);g.connect(master);o.start();setInterval(()=>{o.frequency.setValueAtTime(f*(Math.random()>.5?1:1.5),audio.currentTime)},2400+i*500)})}if(audio.state==='suspended')await audio.resume();on=!on;document.getElementById('music').textContent=on?'🎵 Música ON':'🎵 Música OFF';document.getElementById('music').classList.toggle('musicOn',on);if(!on)audio.suspend()};
+
+// mensaje final con doble clic en el planeta
+document.querySelector('.planet').ondblclick=()=>document.getElementById('modal').classList.add('on');
+document.getElementById('close').onclick=()=>document.getElementById('modal').classList.remove('on');
+</script>
+</body>
+</html>
